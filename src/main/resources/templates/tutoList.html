@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a th:href="@{/tutorials}">TutoList</a>
+<a th:href="@{/tutorials/add}">Add Tutorial</a>
+<a th:href="@{/author/login}">Inscription/Connexion</a>
+<h1>Tutoriels :</h1>
+<ul>
+    <li th:each="tuto : ${tutos}">
+       <span>ID : <span th:text="${tuto.id}"> </span> </span>
+       <span>Titre : <span th:text="${tuto.name}"></span></span>
+       <span>Date de Création :<span th:text="${tuto.createDate}"></span></span>
+        <span>Description :<span th:text="${tuto.description}"></span></span>
+    </li>
+</ul>
+<p th:text="${author.email}"></p>
+
+
+</body>
+</html>

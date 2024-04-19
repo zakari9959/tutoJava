@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a th:href="@{/tutorials}">TutoList</a>
+<a th:href="@{/tutorials/add}">Add Tutorial</a>
+<a th:href="@{/author/login}">Inscription/Connexion</a>
+<h1>Connexion</h1>
+<form action="#" th:action="@{/author/login}" th:object="${author}" method="post">
+    <div>
+        <label for="email">Email</label>
+        <input type="text" id="email" th:field="*{email}" required/>
+    </div>
+    <div>
+        <label for="password">Mot de passe:</label>
+        <input type="password" id="password" th:field="*{password}" required/>
+    </div>
+    <button type="submit">Se connecter</button><br>
+    <a href="/author/signin">Pas encore de compte ? Inscrivez-vous</a>
+</form>
+</body>
+</html>

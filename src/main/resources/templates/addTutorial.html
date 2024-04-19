@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ADD Tutorial</title>
+</head>
+<body>
+<a th:href="@{/tutorials}">TutoList</a>
+<a th:href="@{/tutorials/add}">Add Tutorial</a>
+<a th:href="@{/author/login}">Inscription/Connexion</a>
+<h1>Ajouter un Tutoriel</h1>
+<form th:action="@{/tutorials}" th:object="${newTuto}" method="post">
+    <label for="name">Titre:</label><br>
+    <input type="text" id="name" name="name" th:field="*{name}" required><br>
+    <label for="description">Description :</label>
+    <input type="text" id="description" name="description" th:field="*{description}" required>
+    <button type="submit">Ajouter un Tutoriel</button>
+</form>
+</body>
+</html>
