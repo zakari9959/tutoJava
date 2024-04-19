@@ -1,6 +1,5 @@
 package com.junia.demo.service;
 
-import com.fasterxml.jackson.databind.DatabindContext;
 import com.junia.demo.repository.TutorialRepository;
 import com.junia.demo.repository.entity.Author;
 import com.junia.demo.repository.entity.Tutorial;
@@ -9,15 +8,14 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TutorialService {
     private final TutorialRepository tutorialRepository;
-    private final AuthorService authorService;
 
-    public TutorialService(TutorialRepository tutorialRepository, HttpSession httpSession, AuthorService authorService) {
+    public TutorialService(TutorialRepository tutorialRepository, HttpSession httpSession) {
         this.tutorialRepository = tutorialRepository;
-        this.authorService = authorService;
     }
 
 
@@ -29,15 +27,13 @@ public class TutorialService {
         tutorialRepository.findById(id);
         return null;
     }
+    public Optional<Tutorial> fetchById(long id) {
+        return tutorialRepository.findById(id);
+    }
 
-    public void addTutorial(Tutorial tutorial, HttpSession session) {
-        if (session.getAttribute("author") != null) {
-            tutorial.setAuthor((Author) session.getAttribute("author"));
+    public void addTutorial(Tutorial tutorial) {
             tutorial.setCreateDate(LocalDate.now());
             tutorialRepository.save(tutorial);
-        } else {
-            throw new RuntimeException("L'ID de l'auteur n'est pas présent dans la session.");
-        }
     }
    public Tutorial updateTutorial(long id, Tutorial updatedTutorial) {
         tutorialRepository.findById(id);

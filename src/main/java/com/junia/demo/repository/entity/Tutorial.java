@@ -1,6 +1,8 @@
 package com.junia.demo.repository.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
 
@@ -9,10 +11,14 @@ public class Tutorial {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @NotNull
+    @Size(min = 2, max = 50)
     private String name;
     private LocalDate createDate;
+    @NotNull
+    @Size(min = 10, max = 500)
     private String description;
-
+    @NotNull
     @ManyToOne
     private Author author;
 

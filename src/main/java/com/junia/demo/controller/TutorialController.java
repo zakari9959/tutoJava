@@ -1,5 +1,6 @@
 package com.junia.demo.controller;
 
+import com.junia.demo.repository.entity.Author;
 import com.junia.demo.repository.entity.Tutorial;
 import com.junia.demo.service.TutorialService;
 import jakarta.servlet.http.HttpSession;
@@ -41,7 +42,8 @@ public class TutorialController {
 
     @PostMapping("/tutorials")
     public String addTutorial(@ModelAttribute Tutorial tutorial, HttpSession session) {
-        tutorialService.addTutorial(tutorial, session);
+        tutorial.setAuthor((Author) session.getAttribute("author"));
+        tutorialService.addTutorial(tutorial);
         return "redirect:/tutorials";
     }
 }

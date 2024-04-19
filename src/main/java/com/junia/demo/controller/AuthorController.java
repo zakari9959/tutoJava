@@ -36,16 +36,15 @@ public class AuthorController {
         return "redirect:/tutorials";
     }
 
+    @PostMapping("/author/login")
     public String login(@ModelAttribute Author author, HttpSession session, Model model) {
-        // Vérifiez si l'auteur existe dans la base de données avec le bon email et mot de passe
         Author authenticatedAuthor = authorService.authenticate(author.getEmail(), author.getPassword());
         if(authenticatedAuthor != null) {
             session.setAttribute("author", authenticatedAuthor);
             return "redirect:/tutorials";
         } else {
-            // Si l'authentification échoue, vous pouvez retourner à la page de connexion avec un message d'erreur
             model.addAttribute("error", "Email ou mot de passe incorrect");
-            return "loginPage"; // Assurez-vous d'avoir une vue nommée "loginPage"
+            return "login";
         }
     }
 }

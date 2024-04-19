@@ -11,14 +11,12 @@
 <h1>Tutoriels :</h1>
 <ul>
     <li th:each="tuto : ${tutos}">
-       <span>ID : <span th:text="${tuto.id}"> </span> </span>
-       <span>Titre : <span th:text="${tuto.name}"></span></span>
-       <span>Date de Création :<span th:text="${tuto.createDate}"></span></span>
-        <span>Description :<span th:text="${tuto.description}"></span></span>
+       <p>ID : <span th:text="${tuto.id}"> </span> </p>
+       <p>Titre : <span th:text="${tuto.name}"></span></p>
+       <p>Date de Création :<span th:text="${tuto.createDate}"></span></p>
+        <p>Description :<span th:text="${tuto.description}"></span></p>
+        <p>Auteur :<span th:text="${tuto.author.firstname}"></span></p>
     </li>
 </ul>
-<p th:text="${author.email}"></p>
-
-
 </body>
 </html>
